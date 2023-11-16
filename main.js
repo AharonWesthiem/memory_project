@@ -7,6 +7,8 @@ const tileCount = colorsPicklist.length;
 let revealedCount = 0;
 let activeTile = null;
 let awaitingEndOfMove = false;
+let counter = 0;
+let countermoves = 0;
 
 function buildTile(color) {
 	const element = document.createElement("div");
@@ -14,9 +16,11 @@ function buildTile(color) {
 	element.classList.add("tile");
 	element.setAttribute("data-color", color);
 	element.setAttribute("data-revealed", "false");
-
+	
 	element.addEventListener("click", () => {
 		const revealed = element.getAttribute("data-revealed");
+		
+		document.querySelector("#movs").innerHTML = counter +"<br>"+ countermoves;
 
 		if (
 			awaitingEndOfMove
@@ -31,7 +35,7 @@ function buildTile(color) {
 
 		if (!activeTile) {
 			activeTile = element;
-
+			countermoves+=1;
 			return;
 		}
 
@@ -44,12 +48,17 @@ function buildTile(color) {
 			activeTile = null;
 			awaitingEndOfMove = false;
 			revealedCount += 2;
-
+			// countermoves=0
+			counter+=1
+			document.querySelector("#movs").innerHTML = counter	+"<br>"+ countermoves;
+			
 			if (revealedCount === tileCount) {
-				alert("You win! Refresh to start again.");
+				document.querySelector("#movs").innerHTML = 
+				"You finish the game in " + countermoves +" movs <br> Refresh to start again."
 			}
 
 			return;
+			
 		}
 
 		awaitingEndOfMove = true;

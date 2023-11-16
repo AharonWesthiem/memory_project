@@ -1,19 +1,27 @@
 body {
-	background: #333333;
+	background: #9f4040;
 	margin: 0;
+	overflow: hidden;
+	width: 100%;
+	display: grid;
+	grid-template-rows:130px 1fr;
+}
+.main{
+	display: flex;
 }
 
 .tiles {
-	margin: 48px auto;
+	/* grid-column:; */
+	margin: 100px auto;
 	width: max-content;
 	display: grid;
-	grid-template-columns: repeat(4, 100px);
+	grid-template-columns: repeat(4, 150px);
 	gap: 16px;
 	box-sizing: border-box;
 }
 
 .tile {
-	height: 100px;
+	height: 140px;
 	background: #111111;
 	border: 5px solid #444444;
 	cursor: pointer;
