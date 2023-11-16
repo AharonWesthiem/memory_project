@@ -1,10 +1,29 @@
 body {
-	background: #9f4040;
+	background: rgb(224,96,53);
+	background: linear-gradient(90deg, rgba(224,96,53,1) 0%, rgba(196,252,70,0.9640231092436975) 90%);;
 	margin: 0;
 	overflow: hidden;
 	width: 100%;
 	display: grid;
 	grid-template-rows:130px 1fr;
+}
+.home{
+	background: rgb(224,96,53);
+	background: linear-gradient(90deg, rgba(224,96,53,1) 0%, rgba(196,252,70,0.9640231092436975) 90%);;
+	display: grid;
+	grid-template-rows:130px 1fr;
+
+}
+.div{
+	display: grid;
+	grid-template-columns:1fr 1fr;
+	grid-template-rows:1fr 1fr ;
+	color:rgb(44, 102, 103) ;
+	font-size: 50px;
+	text-align: center;
+	width: 100%; 
+	height: 150px; 
+	border: 2px solid (212, 34, 34);
 }
 .main{
 	display: flex;
@@ -12,17 +31,102 @@ body {
 
 .tiles {
 	/* grid-column:; */
+	flex-grow: 2;
 	margin: 100px auto;
 	width: max-content;
 	display: grid;
 	grid-template-columns: repeat(4, 150px);
 	gap: 16px;
 	box-sizing: border-box;
+	justify-content: center;
 }
 
 .tile {
 	height: 140px;
-	background: #111111;
+	background-image:url("/bg.jpg") ;
+	background-size: contain;
+	border-radius: 10px;
+	 
+	border: 5px solid rgb(44, 102, 103);
+	cursor: pointer;
+}
+.bc{
+	height: 140px;
+	background-color: antiquewhite ;
+	background-size: contain;
+	 
+	
 	border: 5px solid #444444;
 	cursor: pointer;
 }
+
+#timer{
+	flex-grow: 1;
+}
+
+.bord_result{
+	background-color: rgb(181, 226, 227) ;
+	flex-grow: 0.5;
+	border: 5px solid rgb(44, 102, 103);
+	padding: 10px;
+	margin:  10px;
+	border-radius: 10px;
+	height: 70%;
+	
+ 
+}
+
+.bord_result div{
+	 
+	margin: auto;
+}
+
+#win{
+	
+}
+h1 {
+	text-align: center;
+	color: rgb(44, 102, 103);
+	font-size: 64px;
+}
+
+#movs{
+	margin: 5px;
+}
+.item-result{
+	border: 2px solid wheat;
+	text-align: center;
+	width: 170px;
+	height: 110px;
+	
+}
+
+h2{
+	font-size: px;
+	text-align: center;
+	
+}
+
+h3{
+	font-size: 36px;
+	margin-top: 20px;
+}
+
+h4{
+	font-size: 36px;
+	margin-top: 20px;
+
+}
+.name_time{
+	margin-right: 120px;
+	
+	 
+}
+ 
+.item-re{
+	color: rgb(44, 102, 103);
+	border: 2px solid rgb(44, 102, 103);
+	padding: 20px;
+}
+
+ 

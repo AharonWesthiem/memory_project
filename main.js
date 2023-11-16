@@ -9,6 +9,10 @@ let activeTile = null;
 let awaitingEndOfMove = false;
 let counter = 0;
 let countermoves = 0;
+let timerOn =null;
+let timestop =null;
+let time =null;
+let gameOver=true
 
 function buildTile(color) {
 	const element = document.createElement("div");
@@ -19,8 +23,12 @@ function buildTile(color) {
 	
 	element.addEventListener("click", () => {
 		const revealed = element.getAttribute("data-revealed");
+		if(!timerOn){
+		 startTimer()
+		timerOn =1}
 		
-		document.querySelector("#movs").innerHTML = counter +"<br>"+ countermoves;
+		document.querySelector("#win").innerHTML = counter 
+		document.querySelector("#movs").innerHTML =  countermoves;
 
 		if (
 			awaitingEndOfMove
@@ -31,6 +39,7 @@ function buildTile(color) {
 		}
 
 		// Reveal this color
+		element.className="bc"
 		element.style.backgroundColor = color;
 
 		if (!activeTile) {
@@ -50,11 +59,21 @@ function buildTile(color) {
 			revealedCount += 2;
 			// countermoves=0
 			counter+=1
-			document.querySelector("#movs").innerHTML = counter	+"<br>"+ countermoves;
+			document.querySelector("#win").innerHTML = counter 
+			document.querySelector("#movs").innerHTML =  countermoves;
+
 			
 			if (revealedCount === tileCount) {
-				document.querySelector("#movs").innerHTML = 
-				"You finish the game in " + countermoves +" movs <br> Refresh to start again."
+				document.querySelector("#timer").innerHTML = time
+				timestop=1
+				document.querySelector("#gameover").className="item-result"
+				document.querySelector("#gameover").innerHTML = 
+				" You finish the game in " + countermoves + " movs <br> in " + time + "<br>"
+				"Refresh to start again."
+				document.querySelector("#win").innerHTML = "win"
+				document.querySelector("#timer").innerHTML = "00:00"
+				gameOver=false
+
 			}
 
 			return;
@@ -64,8 +83,10 @@ function buildTile(color) {
 		awaitingEndOfMove = true;
 
 		setTimeout(() => {
-			activeTile.style.backgroundColor = null;
-			element.style.backgroundColor = null;
+			activeTile.className ="tile"
+			element.className ="tile"
+			// activeTile.style.backgroundColor = null;
+			// element.style.backgroundColor = null;
 
 			awaitingEndOfMove = false;
 			activeTile = null;
@@ -85,4 +106,62 @@ for (let i = 0; i < tileCount; i++) {
 	tilesContainer.appendChild(tile);
 }
 
- 
+var timer=0;
+var min=0;
+var sec=0;
+function startTimer() {
+min=parseInt(timer/60);
+sec=parseInt(timer%60);
+
+
+
+
+
+ min = (min < 10) ? "0" + min : min
+ sec = (sec < 10) ? "0" + sec : sec
+
+ if(gameOver){
+
+ time = document.querySelector("#timer").innerHTML = `${min.toString()} : ${sec.toString()}`;
+     
+ timer++;}
+ if(!timestop){
+     
+  setTimeout(startTimer,1000)};
+  return time };
+
+
+//   function writeTime() {
+
+// 	// get a date object
+// 	var today = new Date();
+	
+// 	// ask the object for some information
+// 	var hours = today.getHours();
+// 	var minutes = today.getMinutes();
+// 	var seconds = today.getSeconds();
+	
+// 	// fixTime makes the minutes and seconds look right
+// 	// it just sticks a zero in front of numbers less than 10
+// 	minutes = fixTime(minutes);
+// 	seconds = fixTime(seconds);
+	
+// 	// put together the time string and write it out
+// 	var the_time = hours + ":" + minutes + ":" + seconds;
+// 	window.document.the_form.the_text.value = the_time;
+	
+// 	// run this function again in half a second
+// 	the_timeout= setTimeout('writeTime();',500);
+	
+// 	}
+	
+// 	function fixTime(the_time) {
+	
+// 	  if (the_time < 10)
+// 	  {
+// 		the_time = "0" + the_time;
+// 	  }
+// 	  return the_time;
+// 	} 
+
+// 	 const tima = new Date().get time()
